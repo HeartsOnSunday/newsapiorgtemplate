@@ -9,6 +9,8 @@ $(document).ready(function() {
         method: "GET",
         url: "https://newsapi.org/v2/sources",
         data: { category:"technology", country:"us", language:"en", apikey: APIKEY},
+        // url: "https://newsapi.org/v2/top-headlines",
+        // data: {sources: "techcrunch", apikey: APIKEY},
         success: function(data){
             if (data.status == "ok") {
                 console.log(data);
@@ -23,7 +25,7 @@ $(document).ready(function() {
                    WOO.setAttribute("id", "HOO");
                    WOO.setAttribute("value", data.sources[i].description);
                    WOO.innerHTML = data.sources[i].description;
-                   document.getElementById("FIXTHIS").appendChild(WOO);
+                   document.getElementById("BAM").appendChild(WOO);
                 }
                 alert(data.status);
                 alert(data.sources[0].description);
