@@ -19,16 +19,33 @@ $(document).ready(function() {
                    source.innerHTML = data.sources[i].name;
                    document.getElementById("selection").appendChild(source);
                 }
+
             }
         }
     });
-
-    $("#source").submit(function(event) {
-        event.preventDefault();
-        alert(document.getElementById("selection").value);
-        console.log(document.getElementById("HOO").value);
-    });   
   });
+
+$("#source").submit(function(event) {
+        event.preventDefault();
+    var newspaper = document.getElementById("selection").value;
+    document.getElementById("BAM").innerHTML = "";
+    $.ajax({
+        method: "GET",
+        url: "https://newsapi.org/v2/top-headlines",
+        data: {sources: newspaper, apikey: APIKEY},
+        success: function(data){
+            if (data.status == "ok") {
+                console.log("articles");
+                for (var i = 0; i < data.articles.length; i++) {
+                    var option = document.createElement("P");
+                    option.innerHTML = ""+data.articles[i].title+" <br> "+data.articles[i].description+"";
+                    document.getElementById("BAM").appendChild(option);
+                }
+            }
+        }
+    })
+        
+    }); 
 
                    
                 //   var WOO = document.createElement("P");
