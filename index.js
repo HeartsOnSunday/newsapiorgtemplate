@@ -9,8 +9,6 @@ $(document).ready(function() {
         method: "GET",
         url: "https://newsapi.org/v2/sources",
         data: { category:"technology", country:"us", language:"en", apikey: APIKEY},
-        // url: "https://newsapi.org/v2/top-headlines",
-        // data: {sources: "techcrunch", apikey: APIKEY},
         success: function(data){
             if (data.status == "ok") {
                 console.log(data);
@@ -20,35 +18,26 @@ $(document).ready(function() {
                    source.setAttribute("value", data.sources[i].id);
                    source.innerHTML = data.sources[i].name;
                    document.getElementById("selection").appendChild(source);
-                   
-                   var WOO = document.createElement("P");
-                   WOO.setAttribute("id", "HOO");
-                   WOO.setAttribute("value", data.sources[i].title);
-                   WOO.innerHTML = data.sources[i].title + ": " + data.sources[i].description;
-                   console.log("whats up");
-                   document.getElementById("BAM").appendChild(WOO);
                 }
-                alert(data.status);
-                alert(data.sources[0].description);
-                alert(data.sources[0].title);
-                console.log(data.sources[i].title);
             }
         }
     });
 
-    $("#source").submit( function(event) {
+    $("#source").submit(function(event) {
         event.preventDefault();
         alert(document.getElementById("selection").value);
-        alert(document.getElementById("HOO").value);
+        console.log(document.getElementById("HOO").value);
     });   
   });
 
-//      success: function(data){
-//            if (data.status == "ok") {
-//               alert(data.status);
-//           }
-//       }
-//    })
-    // .done(function( data ) {
-    //   console.log( data );
-    //     console.log( data.status);
+                   
+                //   var WOO = document.createElement("P");
+                //   WOO.setAttribute("id", "HOO");
+                //   WOO.setAttribute("value", data.sources[i].title);
+                //   WOO.innerHTML = data.sources[i].title + ": " + data.sources[i].description;
+                //   console.log("whats up");
+                //   document.getElementById("BAM").appendChild(WOO);
+                
+                // alert(data.status);
+                // alert(data.sources[0].description);
+                // alert(data.sources[0].title);
