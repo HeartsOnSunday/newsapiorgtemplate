@@ -23,12 +23,15 @@ $(document).ready(function() {
                    
                    var WOO = document.createElement("P");
                    WOO.setAttribute("id", "HOO");
-                   WOO.setAttribute("value", data.sources[i].description);
-                   WOO.innerHTML = data.sources[i].description;
+                   WOO.setAttribute("value", data.sources[i].title);
+                   WOO.innerHTML = data.sources[i].title + ": " + data.sources[i].description;
+                   console.log("whats up");
                    document.getElementById("BAM").appendChild(WOO);
                 }
                 alert(data.status);
                 alert(data.sources[0].description);
+                alert(data.sources[0].title);
+                console.log(data.sources[i].title);
             }
         }
     });
