@@ -19,7 +19,6 @@ $(document).ready(function() {
                    source.innerHTML = data.sources[i].name;
                    document.getElementById("selection").appendChild(source);
                 }
-
             }
         }
     });
@@ -27,23 +26,32 @@ $(document).ready(function() {
 
 $("#source").submit(function(event) {
         event.preventDefault();
-    var newspaper = document.getElementById("selection").value;
-    document.getElementById("BAM").innerHTML = "";
+        document.getElementById("HDLN").innerHTML = "";
+        var newspaper = document.getElementById("selection").value;
+    
     $.ajax({
         method: "GET",
         url: "https://newsapi.org/v2/top-headlines",
         data: {sources: newspaper, apikey: APIKEY},
         success: function(data){
             if (data.status == "ok") {
+                console.log(data);
                 console.log("articles");
                 for (var i = 0; i < data.articles.length; i++) {
-                    var option = document.createElement("P");
-                    option.innerHTML = ""+data.articles[i].title+" <br> "+data.articles[i].description+"";
-                    document.getElementById("BAM").appendChild(option);
+                    //display the title
+                    var title = document.createElement("A");
+                    title.setAttribute("href", data.articles[i].url, "target", "_blank");
+                    title.innerHTML = ""+data.articles[i].title+"";
+                    document.getElementById("HDLN").appendChild(title);
+                    //display description
+                    var description = document.createElement("div");
+                    description.setAttribute("style", "font")
+                    description.innerHTML = "<br> "+data.articles[i].description+"";
+                    document.getElementById("HDLN").appendChild(description).style.fontWeight = "900";
                 }
             }
         }
-    })
+    });
         
     }); 
 
