@@ -23,6 +23,13 @@ $(document).ready(function() {
         }
     });
   });
+  
+$("#button").click(function(){
+    //var image = document.createElement("img").toggle();
+    var image = document.getElementById("robots").src = "https://i.pinimg.com/originals/9b/5d/e6/9b5de677b247a95869a8f8accbd798ff.jpg";
+    //image.toggle();
+});
+  
 
 $("#source").submit(function(event) {
         event.preventDefault();
@@ -48,6 +55,11 @@ $("#source").submit(function(event) {
                     description.setAttribute("style", "font")
                     description.innerHTML = "<br> "+data.articles[i].description+"";
                     document.getElementById("HDLN").appendChild(description).style.fontWeight = "900";
+                    //show a pic
+                    //document.getElementById("robots").src = "https://i.pinimg.com/originals/9b/5d/e6/9b5de677b247a95869a8f8accbd798ff.jpg";
+                    var pic = document.createElement("img");
+                    pic.setAttribute("src", data.articles[i].url);
+                    document.getElementById("HDLN").appendChild(pic);
                 }
             }
         }
