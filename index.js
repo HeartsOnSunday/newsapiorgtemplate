@@ -60,6 +60,7 @@ $("#source").submit(function(event) {
                     var pic = document.createElement("img");
                     pic.setAttribute("src", data.articles[i].url);
                     document.getElementById("HDLN").appendChild(pic);
+                    data.articles[i].url;
                 }
             }
         }
